@@ -2,7 +2,7 @@
 	<div id="app">
 		<h1>Tarefas</h1>
 		<new-task @taskAdd="addTask"></new-task>
-		<task-grid :tasks="tasks">	</task-grid>
+		<task-grid :tasks="tasks" @taskDeleted="deleteTask">	</task-grid>
 	</div>
 </template>
 
@@ -13,11 +13,7 @@ import NewTask from '@/components/NewTask.vue'
 export default {
 	data(){
 		return {
-			tasks: [
-				{name: 'Lavar a Louça', pending: false},
-				{name: 'Comprar blusa', pending: true},
-				
-			]
+			tasks: []
 		}
 	},
 	components:{
@@ -34,6 +30,9 @@ export default {
 					pending: task.pending || true
 				})
 			}
+		},
+		deleteTask(id) {
+			this.tasks.splice(id, 1)
 		}
 	}
 
