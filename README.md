@@ -1,5 +1,5 @@
-# todo
-
+# todo com Vue
+Projeto todo com vuejs do curso da cod3r.
 ## Project setup
 ```
 npm install
