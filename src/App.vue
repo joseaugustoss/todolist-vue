@@ -26,6 +26,14 @@ export default {
 		NewTask,
 		TaskProgress
 	},
+	watch:{
+		tasks:{
+			deep: true,
+			handler(){
+				localStorage.setItem('tasks', JSON.stringify(this.tasks))
+			}
+		}
+	},
 	computed:{
 		progress(){
 			const total = this.tasks.length 
@@ -50,6 +58,12 @@ export default {
 		toggleTaskSTate(id) {
 			this.tasks[id].pending = !this.tasks[id].pending
 		}
+	},
+	created(){
+		const json = localStorage.getItem("tasks");
+		const array = JSON.parse(json);
+
+		this.tasks = Array.isArray(array) ? array : [];
 	}
 
 }
