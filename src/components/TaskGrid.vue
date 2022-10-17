@@ -3,6 +3,7 @@
     <template v-if="tasks.length">
         <task v-for="(task, id) in tasks" :key="task.name" :task="task"
         @taskDeleted="$emit('taskDeleted', id)"
+        @taskStateChanged="$emit('taskStateChanged', id)"
         ></task>
     </template>
     <p v-else class="no-task">Sua vida está em dia :)</p>
